@@ -10,7 +10,7 @@ class App {
 
     state;  // state variables: if any
 
-    //countries; // Countries view
+    cliente; // Countries view
 
     constructor() {
         this.state = {};
@@ -19,7 +19,7 @@ class App {
         this.dom.querySelector('#app>#modal #apply').addEventListener('click', e => this.login());
         this.renderBodyFiller();
         this.renderMenuItems();
-        //this.countries = new Countries();
+        this.cliente = new Cliente();
     }
 
     render = () => {
@@ -156,15 +156,15 @@ class App {
         if (globalstate.user !== null) {
             switch (globalstate.user.rol) {
                 case 'CLI':
-                    //  this.countriesShow();
+                    this.clienteShow();
                     break;
             }
         }
     }
 
-    countriesShow = () => {
-        this.dom.querySelector('#app>#body').replaceChildren(this.countries.dom);
-        this.countries.list();
+    clienteShow = () => {
+        this.dom.querySelector('#app>#body').replaceChildren(this.cliente.dom);
+        this.cliente.list();
     }
 
     login = async () => {
@@ -215,9 +215,7 @@ class App {
             // Manejar el error de cierre de sesión
             // Puedes mostrar una alerta u otra acción apropiada
             alert('Error al cerrar sesión');
-        } else {
-            alert('Sesión cerrada exitosamente');
-        }
+        } 
 
     }
 
